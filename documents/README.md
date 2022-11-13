@@ -2,5 +2,4 @@
 
 Here contains documents for our Discord Plugin:
 1. Specifications Document
-2. Product Design Document
-3. to be continued...
+2. to be continued...

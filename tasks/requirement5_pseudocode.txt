@@ -53,47 +53,12 @@ function checkGameClose() {
 ////////////////////
 // Create a data structure to hold the user ratings for each individual game.
 
-// Compared to the other data structures needed for this application, the one to hold ratings won't be as complicated.
-// It will most likely be a 2D vector: 1 dimension to track the ratings, and 1 dimension to track the specific game.
-// This structure will mainly be populated with int values, along with the occasional string to hold the video game title.
-// This will be created out of a vector class, which will be utilized to instantiate other vector objects.
-
 ////////////////////
 ////// TASK 5 //////
 ////////////////////
 // Convert user ratings into integer values that can be stored in a data structure.
 
-// With the data structure intact, the application has to move the data into it.
-// After the user inputs their rating through the application's interface, the data must be converted into an integer value.
-// It will only be an integer value varying between 1-5.
-// The application must also track the video game associated with the rating.
-
-function storeSessionRating() {
-   int userRating = getSessionRating(number);
-   std::string userGame = getSessionRating(game);
-   for (scan vector) {
-      if (userGame) {
-         sessionRatingVector.insert(userRating);
-         return 0;
-      }
-   }
-   sessionRatingVector.insert(userGame);
-   sessionRatingVector.insert(userRating);
-   return 0;
-}
-
-// The star rating will be inserted into the "userRating" variable as an integer.
-// The game title will be inserted into the "userGame" variable as a string.
-// Then, it will check the current vector for any existing ratings under the same game.
-// If it exists in the database, it inserts it under that title.
-// If it doesn't, it creates a new node for the game title and rating.
-
 ////////////////////
 ////// TASK 6 //////
 ////////////////////
 // Implement a setting to disable the rating popup.
-
-// This is a simple setting that can be implemented using Discord's button components.
-// This feature was previously showcased in the Project Design document.
-
-// https://discord.com/developers/docs/interactions/message-components#buttons

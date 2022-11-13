@@ -1,6 +1,4 @@
 node_modules
 .env
 config.json
-
-
-start_bot.bat
+coverage
