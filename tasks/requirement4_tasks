@@ -1,0 +1,150 @@
+/* 
+  
+  Task List created by Maddie Zakham
+  
+  Requirement Tasks:
+  1. Establish connection between the user's Discord and Steam accounts. 3 hours to perform this task.
+  2. Establish a connection to a Discord bot that can store data collected from Steam. 3 hours to perform this task.
+  3. Create a data structure to store user ratings, hours played and achievements. 8 hours to perform this task.
+  4. Convert ratings and hours played into integer values to be stored in data structure. Then convert achievements 
+  in to strings. 4 hours to perform this task.
+  5. Establish ability for plugin to display data in Discord bot. 5 hours to perform this task.
+  
+ */
+
+/*
+
+TASK 1
+For task 1, we need to establish a connection between the user's Discord and Steam accounts. 
+This should be a simple task as we need the user's logins for both applications and a connection between them.
+This can be done in Discord user settings. There is a connections setting in Discord that allows you to connect
+your Steam account. Steps as shown:
+
+1. Click your profile above (in your discord profile no steam)
+2. Click Connected accounts, you must connect at least Discord and Steam to be able to connect to the game server.
+
+Possible issues with this task can be the connection itself. There can be errors with the connection or a wrong connection.
+Another issue can be a user issue. This connection can only be made in Discord and not on Steam. 
+
+*/
+
+/*
+
+TASK 2
+For task 2, we need to establish a connection to a Discord bot that can store the data collected from Steam.
+This can be done by using the Discord Developer portal API to develop a Discord bot that can satisfy our needs.
+Some possible issues that we could run into is the unfamiliarity of Discord Developer. It could take awhile to get
+used to the program in order to make sure the bot works correctly. Once we established a connection to the Discord
+bot, we can start creating our data structure for the data that is needed.
+
+*/
+
+/*
+
+TASK 3
+For task 3, we need to create a data structure that can hold user ratings, hours played and achievements earned. 
+We can use Steam Web API to start saving the correct data to our data structure.
+First, we need to get a list of games a user has and the list of achievements shown in the code below.
+This function will return a list of games the user owns and then the achievements for a specific game that the user owns.
+
+*/
+
+char steamID, appID, include_appinfo;
+GetOwnedGames(steamID, include_appinfo, ...)
+
+/*
+
+The next function we need for this data structure is GetPlayerAchievements. This function returns a list of achievements
+for a game. We can then make a loop to search for the achievements in games that the user already owns.
+These values will be stored in the data structure for the Discord bot to display in a server.
+
+*/
+
+char steamID, appID;
+GetPlayerAchievements(steamID, appID)
+
+/*
+
+Below is a sample of what the code could look like if Steam Web API is unsuccessful or more code is needed.
+A header file would need to be included to get the initial functions. Used help from:
+
+- https://partner.steamgames.com/doc/api/ISteamUserStats
+- https://partner.steamgames.com/doc/api/ISteamUserStats#GetUserAchievement
+
+*/
+
+GetPlayerAchievements::GetPlayerAchievements():
+	appID(0),
+	bool initialized (false),
+	userStatsReceived (this, &GetPlayerAchievements::onUserStatsReceived)
+	{
+		appID = SteamUtils() -> getAppID();
+		requestStats();
+	}
+
+bool GetPlayerAchievements::requestStats()
+{
+	If(userStats90 == NULL || steamUser == NULL)
+	{
+		cout >> "Steam not loaded, please try again";
+		return false;
+	}
+	If(!steamUser() -> nLoggedOn())
+	{
+		cout >> "User not logged in, please try again";
+		return false;
+	}
+}
+
+//this calls the achievements on Steam
+bool GetPlayerAchievements::setAchievements(achievementType type)
+{
+	if(!initialized)
+		return false;
+	steamUserStats() -> setAchievements(achievementLog[type] -> tag.str());
+	return steamUserStats() -> storeStats();
+}
+
+//etc.
+
+/*
+
+For getting the hours played added to the data structure, there are a couple different codes to use to get hours played
+I found one here: https://jrtechs.net/data-science/time-spent-in-steam-games
+This can guide us on how to display the data as well as receive the data from Steam.
+The possible issues behind this is this may not work with the data structure or the code I entered before for achievements.
+This can also lead to issues with the unfamiliarity of coding languages like python or javascript.
+
+*/
+
+/*
+
+TASK 4
+For task 4, we need to convert ratings and hours played into integers and achivements into chars to 
+be stored in the data structure. This can be easy to store into the data structure as displayed above. 
+Some possible issues this may lead to is trying to store the correct values from Steam into the data structure. 
+The values provided from Steam or Discord can be difficult to store if it is calling multiple values in 
+a function. Making sure the correct ratings and hours played are stored can help minimize this problem.
+
+*/
+
+/*
+
+TASK 5
+For task 5, we need to establish a connection with a Discord bot to display our data.
+As taken from our design document:
+
+	"The discord developer portal API provides many of the UI for the discord-bot, this will be needed 
+	in order to satisfy how the user interacts with the program. For the case of the requirements of the 
+	scenario for a rating system through discord, the modal UI provides the form interface for the User to 
+	provide to the rating system. The button component will be used to clarify how the user can submit their 
+	input to the system, additionally the button component will add context to many of the scenarios where 
+	the user will need to post and get information with an element of the a particular system for example, 
+	having a button to get positive or negative reviews for a Steam game. In addition, the User interface 
+	for key information components should be designed to visually communicate elements such as displaying 
+	Steam titles, playtime per title, achievements for each title, and some visual representation of a  
+	notification for hitting certain playtime hours in the plugin application."
+
+Some potential issues we may have with using SteamAPI and Discord Developer API is, once again, the familiarity
+of the tools. Another issue we can run into is the Discord bot not displaying the correct information or not 
+displaying anything when called for.

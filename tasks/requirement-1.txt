@@ -1,0 +1,57 @@
+//Task 1//
+Establish connection between the user's Discord and Steam accounts.
+This implementation for this task will safely constrain user input for their login for Discord. Logging through steam is referenced and communicated to discord's official service to connect a steam account.
+
+//Task 2//
+create a procedure to get request to the Steam database for a selection of all the playtime
+of all Steam games played by the users
+
+    /* this function is used to make calls to the SteamApi
+    * @param  logfile,  messages are sent here for developer to
+    * @param userList, will hold a list of every steam game owned by the user and the playtime for each title
+    * @param username, the registered Steam username that is feed to the plugin
+    */
+    async getUsersGames( logFile, userList, username)
+
+    try {
+    //start getting all the steam game's playtime owned by the recorded username by making a get request query to the Steam api
+    let dataOfResponse = await <steamapi>.<Query to get all owned steam games and their playtimes>(username);
+
+    return dataOfResponse;
+
+    }
+    catch (error) {
+        sendMessage("There was an error fetching this player", logFile);
+    }
+
+
+    The pseudocode above is a sample a possible hint of a codeblock to show
+    how task 2 will be designed as a function.
+
+    The first line will declare some function that indicates it is a function
+    to retrieve steam games played and owned by the user and the respected playtime for each game.
+    As an api call it would be an async function to enable behavior to make request
+    and get response from the SteamAPI.
+    The function will supply a logfile to log any error trying to get a response
+    for the Steam api.
+    A second parameter could be for an object that will record a list
+    steam games played and owned by the user and the respected playtime for each game.
+    If the username is invalid then catch that error and write it to the log file.
+    The funtion will try in getting all the steam game's playtime owned by the recorded username by making a get request query to the Steam api as some list
+    Then return this response to be stored in a data object designed to store the steam games and playtime for each game.
+    This task corresponds to many of the other task. It provides foundation to build on many requirements that need the list of games and total playtime for each game.
+
+//Task 3//
+
+    We need to create a data structure that can hold a list
+    steam games played and owned by the user and the respected playtime for each game.
+    Then
+    Develop a system that will store the query to this datastructure. This can be done once we get the response seen in Task 2 and iterating the data as list of games. For each game we add the title of the game and the playtime of the game as a tuple in our data structure.
+
+//Task 4//
+utilize the data structure in a system that can filter out the data structure based on a steam title. That key will be inputted for the function to return a tuple of the game title and the playtime for that game
+
+//Task 5//
+Create a system that will store and update tuples of games and their playtimes .
+Which is then used in a separate component that handles the main menu/page/dashboard
+Additionally this information can be used as implementation for the discord bot to provide a seperate command to display games and their playtimes pinned by the user
